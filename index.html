@@ -100,19 +100,42 @@
 
 </body>
 </html>
-month,facecream,facewash,toothpaste,bathingsoap,shampoo,moisturizer,total_unit,total_profit
-1,2500,1500,5200,9200,1200,1500,21100,211000
-2,2630,1200,6100,9300,2100,1200,22530,183300
-3,2140,1340,5870,8870,1870,1130,21220,222700
-4,3600,1740,4560,7760,1560,1740,20960,209600
-5,2760,1555,4890,7490,1890,1555,20140,201400
-6,2980,1120,5670,8600,1780,1890,22040,204000
-7,3700,1480,5980,9060,2310,1780,24310,230410
-8,3540,1780,5690,9860,2860,1430,25160,251400
-9,1990,1890,5950,8760,1870,1960,22420,224000
-10,2340,2100,8300,13200,2300,1800,30040,266700
-11,2900,1760,7900,13300,2400,1780,32140,412800
-12,2900,1760,7460,14400,1800,1760,30200,300200
+# Exercise 3: Read all product sales data and show it using a multiline plot
+# Display the number of units sold per month for each product using multiline plots
+# (i.e., separate plot line for each product)
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read CSV file
+df = pd.read_csv("company_sales_data.csv")
+
+# Read each product column data
+monthList = df['month'].tolist()
+faceCreamSalesData = df['facecream'].tolist()
+faceWashSalesData = df['facewash'].tolist()
+toothPasteSalesData = df['toothpaste'].tolist()
+bathingSoapSalesData = df['bathingsoap'].tolist()
+shampooSalesData = df['shampoo'].tolist()
+moisturizerSalesData = df['moisturizer'].tolist()
+
+# Plot each line for every product
+plt.plot(monthList, faceCreamSalesData, label='Face Cream Sales Data', marker='o', linewidth=3)
+plt.plot(monthList, faceWashSalesData, label='Face Wash Sales Data', marker='o', linewidth=3)
+plt.plot(monthList, toothPasteSalesData, label='Toothpaste Sales Data', marker='o', linewidth=3)
+plt.plot(monthList, bathingSoapSalesData, label='Bathing Soap Sales Data', marker='o', linewidth=3)
+plt.plot(monthList, shampooSalesData, label='Shampoo Sales Data', marker='o', linewidth=3)
+plt.plot(monthList, moisturizerSalesData, label='Moisturizer Sales Data', marker='o', linewidth=3)
+
+# Add labels, title, legend, and ticks
+plt.xlabel('Month Number')
+plt.ylabel('Sales units in number')
+plt.legend(loc='upper left')
+plt.xticks(monthList)
+plt.yticks([1000, 2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000, 18000])
+plt.title('Sales Data')
+plt.show()
+
 
 
 
