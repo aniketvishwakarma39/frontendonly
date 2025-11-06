@@ -100,9 +100,8 @@
 
 </body>
 </html>
-# Exercise 3: Read all product sales data and show it using a multiline plot
-# Display the number of units sold per month for each product using multiline plots
-# (i.e., separate plot line for each product)
+# # Exercise 4: Read toothpaste sales data of each month and show it using a scatter plot
+# Also, add a grid in the plot. Grid line style should be "--".
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -110,32 +109,24 @@ import matplotlib.pyplot as plt
 # Read CSV file
 df = pd.read_csv("company_sales_data.csv")
 
-# Read each product column data
+# Extract month and toothpaste sales data
 monthList = df['month'].tolist()
-faceCreamSalesData = df['facecream'].tolist()
-faceWashSalesData = df['facewash'].tolist()
 toothPasteSalesData = df['toothpaste'].tolist()
-bathingSoapSalesData = df['bathingsoap'].tolist()
-shampooSalesData = df['shampoo'].tolist()
-moisturizerSalesData = df['moisturizer'].tolist()
 
-# Plot each line for every product
-plt.plot(monthList, faceCreamSalesData, label='Face Cream Sales Data', marker='o', linewidth=3)
-plt.plot(monthList, faceWashSalesData, label='Face Wash Sales Data', marker='o', linewidth=3)
-plt.plot(monthList, toothPasteSalesData, label='Toothpaste Sales Data', marker='o', linewidth=3)
-plt.plot(monthList, bathingSoapSalesData, label='Bathing Soap Sales Data', marker='o', linewidth=3)
-plt.plot(monthList, shampooSalesData, label='Shampoo Sales Data', marker='o', linewidth=3)
-plt.plot(monthList, moisturizerSalesData, label='Moisturizer Sales Data', marker='o', linewidth=3)
+# Plot scatter chart
+plt.scatter(monthList, toothPasteSalesData, label='Toothpaste Sales Data')
 
-# Add labels, title, legend, and ticks
+# Add labels and title
 plt.xlabel('Month Number')
-plt.ylabel('Sales units in number')
+plt.ylabel('Number of Units Sold')
+plt.title('Toothpaste Sales Data')
 plt.legend(loc='upper left')
+
+# Customize x-axis ticks
 plt.xticks(monthList)
-plt.yticks([1000, 2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000, 18000])
-plt.title('Sales Data')
+
+# Add grid with custom style
+plt.grid(True, linewidth=1, linestyle='--')
+
+# Show the chart
 plt.show()
-
-
-
-
